@@ -366,6 +366,27 @@
   color: var(--accent);
 }
 
+.hero h1 .hero-name-line {
+  display: block;
+  width: fit-content;
+  clip-path: inset(-0.08em 100% -0.28em 0);
+  transform: translateX(-0.06em);
+  transition: clip-path 1s cubic-bezier(0.7, 0, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.hero h1 .hero-name-line:first-child {
+  color: var(--ink);
+}
+
+.hero h1 .hero-name-line:last-child {
+  transition-delay: 180ms;
+}
+
+.hero h1.is-visible .hero-name-line {
+  clip-path: inset(-0.08em 0 -0.28em 0);
+  transform: translateX(0);
+}
+
 .hero-statement {
   max-width: 610px;
   margin: 31px 0 0;
@@ -548,6 +569,18 @@
   width: 295px;
   border-color: rgba(132, 146, 255, 0.2);
   animation: slow-spin 70s linear infinite;
+}
+
+.visual-orbit-outer::after {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, transparent 0deg 292deg, rgba(103, 226, 255, 0.18) 318deg, #67e8ff 350deg, transparent 360deg);
+  content: '';
+  filter: drop-shadow(0 0 5px rgba(103, 226, 255, 0.75));
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
+  animation: orbit-signal 8s linear infinite;
 }
 
 .visual-orbit-inner {
@@ -1197,7 +1230,19 @@
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
+.skill-group:not(.is-visible) .skill-tags span {
+  opacity: 0;
+  transform: translateY(8px) scale(0.97);
+}
+
+.skill-group.is-visible .skill-tags span {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--tag-index, 0) * 35ms);
+}
+
 .skill-tags span:hover {
+  transition-delay: 0s;
   transform: translateY(-2px);
   border-color: rgba(103, 226, 255, 0.5);
   background: rgba(103, 226, 255, 0.06);
@@ -1449,6 +1494,10 @@
 }
 
 @keyframes slow-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit-signal {
   to { transform: rotate(360deg); }
 }
 
@@ -1923,6 +1972,17 @@
   }
 
   [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero h1 .hero-name-line {
+    clip-path: none;
+    transform: none;
+    transition: none;
+  }
+
+  .skill-group:not(.is-visible) .skill-tags span {
     opacity: 1;
     transform: none;
   }

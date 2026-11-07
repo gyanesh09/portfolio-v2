@@ -38,7 +38,7 @@
     <div class="hero-grid">
       <div class="hero-copy">
         <p class="eyebrow" data-reveal><span class="status-pulse"></span> PRINCIPAL SOFTWARE ENGINEER <span class="eyebrow-divider">/</span> AI FULL-STACK ENGINEER <span class="eyebrow-divider">/</span> NIELSENIQ</p>
-        <h1 data-reveal>Gyanesh<br /><span>Sharma.</span></h1>
+        <h1 data-reveal><span class="hero-name-line">Gyanesh</span><span class="hero-name-line">Sharma.</span></h1>
         <p class="hero-statement" data-reveal>
           I build <span>AI-powered products</span>, from agents to full-stack apps.
         </p>
@@ -193,7 +193,7 @@
             <h3>{{ group.category }}</h3>
           </div>
           <div class="skill-tags">
-            <span *ngFor="let skill of group.skills">{{ skill }}</span>
+            <span *ngFor="let skill of group.skills; let j = index" [style.--tag-index]="j">{{ skill }}</span>
           </div>
         </article>
       </div>
