@@ -1,0 +1,250 @@
+<main class="portfolio">
+  <div class="cursor-reticle" aria-hidden="true">
+    <span class="reticle-corner reticle-corner-tl"></span>
+    <span class="reticle-corner reticle-corner-tr"></span>
+    <span class="reticle-corner reticle-corner-bl"></span>
+    <span class="reticle-corner reticle-corner-br"></span>
+  </div>
+  <header class="site-header">
+    <a class="wordmark" href="#home" (click)="navigateTo('home'); $event.preventDefault()" aria-label="Gyanesh Sharma, home">
+      <span class="wordmark-monogram">GS<span>.</span></span>
+      <span class="wordmark-name">GYANESH SHARMA</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="primary-navigation"
+      [attr.aria-label]="menuOpen() ? 'Close navigation menu' : 'Open navigation menu'"
+    >
+      <span></span><span></span>
+    </button>
+
+    <nav id="primary-navigation" class="site-nav" [class.menu-open]="menuOpen()" aria-label="Main navigation">
+      <a
+        *ngFor="let item of navigation"
+        [href]="'#' + item.id"
+        [class.is-active]="activeSection() === item.id"
+        [attr.aria-current]="activeSection() === item.id ? 'page' : null"
+        (click)="navigateTo(item.id); $event.preventDefault()"
+      >{{ item.label }}</a>
+      <a class="nav-contact" href="#contact" (click)="navigateTo('contact'); $event.preventDefault()">Let’s talk <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero section-anchor">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow" data-reveal><span class="status-pulse"></span> PRINCIPAL SOFTWARE ENGINEER <span class="eyebrow-divider">/</span> AI FULL-STACK ENGINEER <span class="eyebrow-divider">/</span> NIELSENIQ</p>
+        <h1 data-reveal>Gyanesh<br /><span>Sharma.</span></h1>
+        <p class="hero-statement" data-reveal>
+          I build <span>AI-powered products</span>, from agents to full-stack apps.
+        </p>
+        <p class="hero-support" data-reveal>
+          At NielsenIQ, I build the AI platform backend behind conversational analytics—turning natural-language questions into insights from large-scale data warehouses.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a class="button button-primary" href="#experience" (click)="navigateTo('experience'); $event.preventDefault()">
+            Explore my experience <span aria-hidden="true">↓</span>
+          </a>
+          <a class="button button-quiet" href="#contact" (click)="navigateTo('contact'); $event.preventDefault()">
+            Get in touch <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="hero-socials" data-reveal>
+          <a href="mailto:gyanesh0902@gmail.com">GYANESH0902@GMAIL.COM</a>
+          <span aria-hidden="true"></span>
+          <a href="https://www.linkedin.com/in/gyanesh-sharma09/" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
+        </div>
+      </div>
+
+      <figure class="career-visual" data-reveal aria-label="Career profile with current Principal Software Engineer role at NielsenIQ and earlier experience at Tata Consultancy Services">
+        <div class="visual-grid" aria-hidden="true"></div>
+        <div class="visual-orbit visual-orbit-outer" aria-hidden="true"><span></span></div>
+        <div class="visual-orbit visual-orbit-inner" aria-hidden="true"><span></span></div>
+        <div class="visual-header">
+          <span><i class="status-pulse"></i> CAREER PROFILE</span>
+          <span>PUNE, INDIA</span>
+        </div>
+        <div class="visual-portrait">
+          <span class="visual-monogram-ring" aria-hidden="true"></span>
+          <img src="/assets/gyanesh-portrait.png" alt="Gyanesh Sharma" />
+        </div>
+        <p class="visual-role">PRINCIPAL SOFTWARE ENGINEER <span>|</span> AI FULL-STACK ENGINEER</p>
+        <div class="career-signals">
+          <div class="career-signal">
+            <span class="career-year">2023 — NOW</span>
+            <div><strong>Mid → Senior → Principal</strong><small>NIELSENIQ · PUNE, INDIA</small></div>
+            <span class="career-marker" aria-hidden="true">01</span>
+          </div>
+          <div class="career-signal">
+            <span class="career-year">2021 — 22</span>
+            <div><strong>System Engineer</strong><small>TATA CONSULTANCY SERVICES</small></div>
+            <span class="career-marker" aria-hidden="true">02</span>
+          </div>
+        </div>
+        <figcaption class="visual-footer">
+          <span>5+ YEARS IN SOFTWARE</span>
+          <span>PRODUCT · PLATFORMS · APPLIED AI</span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="hero-bottomline">
+      <button type="button" (click)="navigateTo('experience')"><span class="scroll-line"></span> SCROLL TO EXPLORE <span aria-hidden="true">↓</span></button>
+      <span>01 — 05</span>
+    </div>
+  </section>
+
+  <section id="experience" class="content-section experience-section section-anchor">
+    <div class="section-heading" data-reveal>
+      <p class="section-kicker">01 <span>/</span> EXPERIENCE</p>
+      <div>
+        <h2>Work that moves<br /><em>things forward.</em></h2>
+        <p class="section-summary">A career across product engineering, platform architecture and applied AI—with a focus on work that matters in production.</p>
+      </div>
+    </div>
+
+    <div class="career-list">
+      <article *ngFor="let entry of career; let i = index" class="career-entry" data-reveal>
+        <div class="career-index">0{{ i + 1 }}</div>
+        <div class="career-main">
+          <div class="career-heading">
+            <div>
+              <p class="career-company"><strong>{{ entry.company }}</strong> <span>·</span> {{ entry.location }}</p>
+              <h3>{{ entry.role }}</h3>
+            </div>
+            <span class="career-period">{{ entry.period }}</span>
+          </div>
+          <p *ngIf="entry.progression" class="career-progression"><span>GROWTH</span> {{ entry.progression }}</p>
+          <ul class="career-highlights">
+            <li *ngFor="let highlight of entry.highlights"><span aria-hidden="true">↗</span>{{ highlight }}</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="impact-band" aria-label="Selected career impact">
+    <div class="impact-intro" data-reveal>
+      <p class="section-kicker">A FEW NUMBERS <span>/</span> REAL-WORLD IMPACT</p>
+      <h2>Built for<br /><em>the real world.</em></h2>
+    </div>
+    <div class="impact-item" *ngFor="let item of impact; let i = index" [class.impact-item-featured]="item.value === '5'" data-reveal>
+      <strong>{{ item.value }}</strong>
+      <span>{{ item.label }}</span>
+      <small>0{{ i + 1 }}</small>
+    </div>
+  </section>
+
+  <section id="skills" class="content-section skills-section section-anchor">
+    <div class="section-heading" data-reveal>
+      <p class="section-kicker">02 <span>/</span> SKILLS</p>
+      <div>
+        <h2>A toolkit for<br /><em>complex problems.</em></h2>
+        <p class="section-summary">The technologies and practices I bring to the work—from modern AI engineering to dependable full-stack systems.</p>
+      </div>
+    </div>
+
+    <div class="skills-layout">
+      <div class="build-loop" data-reveal aria-label="How I turn a question into an insight">
+        <div class="build-loop-heading">
+          <span class="build-loop-indicator"></span>
+          <span>MY ENGINEERING LOOP</span>
+          <span>01 — 03</span>
+        </div>
+        <h3>From question<br />to <em>insight.</em></h3>
+        <div class="build-stages">
+          <div class="build-stage">
+            <span class="build-stage-index">01</span>
+            <div>
+              <strong>UNDERSTAND</strong>
+              <small>Start with the real question</small>
+            </div>
+            <span class="build-stage-node" aria-hidden="true"></span>
+          </div>
+          <div class="build-stage">
+            <span class="build-stage-index">02</span>
+            <div>
+              <strong>ORCHESTRATE</strong>
+              <small>Bring agents and data together</small>
+            </div>
+            <span class="build-stage-node" aria-hidden="true"></span>
+          </div>
+          <div class="build-stage">
+            <span class="build-stage-index">03</span>
+            <div>
+              <strong>DELIVER</strong>
+              <small>Make the answer useful</small>
+            </div>
+            <span class="build-stage-node" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="build-loop-footer">
+          <span>AI <i>×</i> DATA <i>×</i> PRODUCT</span>
+          <span>BUILT AROUND PEOPLE</span>
+        </div>
+      </div>
+      <div class="skill-groups">
+        <article class="skill-group" *ngFor="let group of skills; let i = index" data-reveal>
+          <div class="skill-group-heading">
+            <span>0{{ i + 1 }}</span>
+            <h3>{{ group.category }}</h3>
+          </div>
+          <div class="skill-tags">
+            <span *ngFor="let skill of group.skills">{{ skill }}</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="content-section about-section section-anchor">
+    <div class="section-heading" data-reveal>
+      <p class="section-kicker">03 <span>/</span> ABOUT</p>
+      <div>
+        <h2>Engineer by craft.<br /><em>Curious by nature.</em></h2>
+        <p class="section-summary">I enjoy working across the stack, thinking through system boundaries, and collaborating with people to make complicated things feel clear.</p>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <article class="about-card education-card" data-reveal>
+        <span class="about-card-index">01 / EDUCATION</span>
+        <div>
+          <h3>B.Tech, Information Technology</h3>
+          <p>Medicaps University <span>·</span> Indore, India</p>
+          <div class="education-meta"><span>2017 — 2021</span><strong>CGPA 8.57</strong></div>
+        </div>
+        <span class="education-seal" aria-hidden="true">IT<br />’21</span>
+      </article>
+      <article class="about-card recognition-card" data-reveal>
+        <span class="about-card-index">02 / RECOGNITION</span>
+        <ul>
+          <li *ngFor="let award of awards"><span aria-hidden="true">✳</span>{{ award }}</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section section-anchor">
+    <div class="contact-copy" data-reveal>
+      <p class="section-kicker">04 <span>/</span> CONTACT</p>
+      <h2>Good work starts<br />with a <em>conversation.</em></h2>
+      <p>If you’re working on a thoughtful product or a challenging engineering problem, I’d be glad to hear from you.</p>
+      <a class="contact-email" href="mailto:gyanesh0902@gmail.com">gyanesh0902@gmail.com <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="contact-aside" data-reveal>
+      <span class="contact-spark" aria-hidden="true">✳</span>
+      <span>OPEN A CONVERSATION</span>
+      <a href="https://www.linkedin.com/in/gyanesh-sharma09/" target="_blank" rel="noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a>
+      <small>PUNE, INDIA <i>·</i> WORKING ACROSS TIME ZONES</small>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <a class="footer-mark" href="#home" (click)="navigateTo('home'); $event.preventDefault()">GS<span>.</span></a>
+    <span>© 2026 GYANESH SHARMA</span>
+  </footer>
+</main>
