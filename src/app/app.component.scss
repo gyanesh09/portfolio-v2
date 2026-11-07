@@ -1290,7 +1290,9 @@
   line-height: 1.65;
 }
 
-.recognition-card li > span {
+.recognition-card li > .spark-icon {
+  align-self: start;
+  margin-top: 2px;
   color: var(--accent);
 }
 
@@ -1362,10 +1364,20 @@
   border-left: 1px solid rgba(103, 226, 255, 0.25);
 }
 
+.spark-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
 .contact-spark {
   margin-bottom: 24px;
   color: var(--accent);
-  font-size: 23px;
 }
 
 .contact-aside > span:not(.contact-spark) {
