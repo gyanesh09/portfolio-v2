@@ -30,7 +30,7 @@
         [attr.aria-current]="activeSection() === item.id ? 'page' : null"
         (click)="navigateTo(item.id); $event.preventDefault()"
       >{{ item.label }}</a>
-      <a class="nav-contact" href="#contact" (click)="navigateTo('contact'); $event.preventDefault()">Let’s talk <span aria-hidden="true">↗</span></a>
+      <a class="nav-contact" href="#contact" (click)="navigateTo('contact'); $event.preventDefault()">Let’s talk <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 16 16" focusable="false"><path d="M4 12 12 4M5 4h7v7" /></svg></a>
     </nav>
   </header>
 
@@ -50,13 +50,13 @@
             Explore my experience <span aria-hidden="true">↓</span>
           </a>
           <a class="button button-quiet" href="#contact" (click)="navigateTo('contact'); $event.preventDefault()">
-            Get in touch <span aria-hidden="true">↗</span>
+            Get in touch <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 16 16" focusable="false"><path d="M4 12 12 4M5 4h7v7" /></svg>
           </a>
         </div>
         <div class="hero-socials" data-reveal>
           <a href="mailto:gyanesh0902@gmail.com">GYANESH0902@GMAIL.COM</a>
           <span aria-hidden="true"></span>
-          <a href="https://www.linkedin.com/in/gyanesh-sharma09/" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
+          <a href="https://www.linkedin.com/in/gyanesh-sharma09/" target="_blank" rel="noreferrer">LINKEDIN <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 16 16" focusable="false"><path d="M4 12 12 4M5 4h7v7" /></svg></a>
         </div>
       </div>
 
@@ -119,7 +119,7 @@
           </div>
           <p *ngIf="entry.progression" class="career-progression"><span>GROWTH</span> {{ entry.progression }}</p>
           <ul class="career-highlights">
-            <li *ngFor="let highlight of entry.highlights"><span aria-hidden="true">↗</span>{{ highlight }}</li>
+            <li *ngFor="let highlight of entry.highlights"><svg class="arrow-icon" aria-hidden="true" viewBox="0 0 16 16" focusable="false"><path d="M4 12 12 4M5 4h7v7" /></svg>{{ highlight }}</li>
           </ul>
         </div>
       </article>
@@ -233,12 +233,12 @@
       <p class="section-kicker">04 <span>/</span> CONTACT</p>
       <h2>Good work starts<br />with a <em>conversation.</em></h2>
       <p>If you’re working on a thoughtful product or a challenging engineering problem, I’d be glad to hear from you.</p>
-      <a class="contact-email" href="mailto:gyanesh0902@gmail.com">gyanesh0902@gmail.com <span aria-hidden="true">↗</span></a>
+      <a class="contact-email" href="mailto:gyanesh0902@gmail.com">gyanesh0902@gmail.com <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 16 16" focusable="false"><path d="M4 12 12 4M5 4h7v7" /></svg></a>
     </div>
     <div class="contact-aside" data-reveal>
       <span class="contact-spark" aria-hidden="true">✳</span>
       <span>OPEN A CONVERSATION</span>
-      <a href="https://www.linkedin.com/in/gyanesh-sharma09/" target="_blank" rel="noreferrer">Connect on LinkedIn <span aria-hidden="true">↗</span></a>
+      <a href="https://www.linkedin.com/in/gyanesh-sharma09/" target="_blank" rel="noreferrer">Connect on LinkedIn <svg class="arrow-icon" aria-hidden="true" viewBox="0 0 16 16" focusable="false"><path d="M4 12 12 4M5 4h7v7" /></svg></a>
       <small>PUNE, INDIA <i>·</i> WORKING ACROSS TIME ZONES</small>
     </div>
   </section>
